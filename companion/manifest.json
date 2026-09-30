@@ -1,0 +1,17 @@
+{
+	"$schema": "../node_modules/@companion-surface/base/assets/manifest.schema.json",
+	"type": "surface",
+	"id": "dji-controller",
+	"name": "DJI Remote Controller",
+	"shortname": "dji-controller",
+	"description": "Use a DJI drone remote controller as a surface, over USB",
+	"version": "0.0.0",
+	"license": "MIT",
+	"repository": "git+https://github.com/bitfocus/companion-surface-dji-controller.git",
+	"bugs": "https://github.com/bitfocus/companion-surface-dji-controller/issues",
+	"maintainers": [{ "name": "Joseph Adams", "email": "joseph@josephadams.dev" }],
+	"runtime": { "type": "node22", "apiVersion": "0.0.0", "entrypoint": "../dist/main.js" },
+	"keywords": ["dji", "drone", "remote", "controller", "joystick", "ptz"],
+	"products": ["DJI RC-N1"],
+	"usbIds": [{ "vendorId": 11427, "productIds": [4128] }]
+}

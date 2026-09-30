@@ -1,0 +1,53 @@
+{
+	"name": "companion-surface-dji-controller",
+	"version": "0.1.0",
+	"main": "dist/main.js",
+	"type": "module",
+	"scripts": {
+		"postinstall": "husky",
+		"format": "prettier -w .",
+		"package": "run build && companion-surface-build",
+		"build": "rimraf dist && run build:main && node ./tools/update-usb-ids.mjs",
+		"build:main": "tsc -p tsconfig.build.json",
+		"build:manifest-usb-ids": "run build:main && node ./tools/update-usb-ids.mjs",
+		"dev": "tsc -p tsconfig.build.json --watch",
+		"lint:raw": "eslint",
+		"lint": "run lint:raw .",
+		"probe": "run build && node ./tools/probe.mjs"
+	},
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/bitfocus/companion-surface-dji-controller.git"
+	},
+	"engines": {
+		"node": "^22.18",
+		"yarn": "^4"
+	},
+	"dependencies": {
+		"@companion-surface/base": "~1.1.0",
+		"serialport": "^13.0.0"
+	},
+	"devDependencies": {
+		"@companion-module/tools": "^2.5.0",
+		"@types/node": "^22.19.3",
+		"@types/semver": "^7.7.1",
+		"eslint": "^9.39.2",
+		"husky": "^9.1.7",
+		"lint-staged": "^16.2.7",
+		"prettier": "^3.7.4",
+		"rimraf": "^6.1.2",
+		"typescript": "~5.9.3",
+		"typescript-eslint": "^8.50.0"
+	},
+	"prettier": "@companion-module/tools/.prettierrc.json",
+	"lint-staged": {
+		"*.{css,json,md,scss}": [
+			"prettier --write"
+		],
+		"*.{ts,tsx,js,jsx}": [
+			"yarn lint:raw --fix"
+		]
+	},
+	"packageManager": "yarn@4.12.0"
+}
